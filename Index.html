@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body{
+            background-color:#272829;
+            color: white;
+        }
+        .welcome{
+            color: white;   
+            font-weight: bolder;
+            font-size:xxx-large;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="container px-4 py-5  text-center" >
+        <img class="d-block mx-auto mb-4" src="./Assets/icons8-qr-code-72 (2).png" alt="">
+        <h1 class="welcome" style="color: white;">Welcome to the QR Code Generator</h1>
+    </div>
+    <div class="text-center">  
+        <center><img src="" id="img"></center>  
+    </div>
+    <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+        <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px" data-bs-theme="light">
+           
+            <li><p>Select the size of the QR Code:</p></li>
+            <select id="size">
+                <option value="100">100x100</option>
+                <option value="200">200x200</option>
+                <option value="250" selected>250x250</option>
+                <option value="300">300x300</option>
+            </select>
+            <hr>
+            <li><p>Enter the data you'd like the QR Code to hold</p></li>
+            <li><input type="text" id="qrdata" placeholder="Type here.." style="width: 100%;"></li>
+            
+            <div class="col-lg-6 col-xxl-4 my-5 mx-auto">
+                <div class="d-grid gap-2">
+                  <button class="btn btn-primary" type="button" style="background-color: orange; width: 100%;" onclick="genQR()">Generate</button>
+                </div>
+            </div>
+        </ul>
+          
+    </div>
+    <p class="tag fw-bold "><center>Developed by Utkarsh Misra</center><p>
+    
+    <script>
+        function genQR(){
+            var gapi = "https://chart.googleapis.com/chart?chf=bg,s,65432100&cht=qr&chs=";
+            var myimg = document.getElementById("img");
+            var mytext = document.getElementById("qrdata").value;
+            var mysize = document.getElementById("size").value;
+
+            if(mytext !== "" && mysize === "100"){
+                 myimg.src=gapi+"100x100"+"&chl="+ mytext;
+                 
+            }
+            else if(mytext !== "" && mysize === "200"){
+                myimg.src=gapi+"200x200"+"&chl="+ mytext;
+            }
+            else if(mytext !== "" && mysize === "250"){
+                myimg.src=gapi+"250x250"+"&chl="+ mytext;
+            }
+            else if(mytext !== "" && mysize === "300"){
+                myimg.src=gapi+"300x300"+"&chl="+ mytext;
+            }
+            else{
+                alert("Please enter the data you'd like the QR Code to hold")
+            }
+
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
